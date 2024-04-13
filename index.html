@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <!-- jQuery google cdn link -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+
+  <!-- Fontawesome icon kit link -->
+  <script src="https://kit.fontawesome.com/db409e5c77.js" crossorigin="anonymous"></script>
+
+  <title>Frontend Mentor | FAQ accordion</title>
+
+  <style>
+    /* Google Font Link */
+    @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+    /* font-family: "Work Sans", sans-serif; */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      list-style: none;
+    }
+
+    :root {
+      --color-White: rgb(255, 255, 255);
+      --color-Light-pink: rgb(249, 240, 255);
+      --color-Grayish-purple: rgb(140, 105, 145);
+      --color-Dark-purple: rgb(47, 21, 51);
+      --color-grey: rgb(239, 238, 238);
+    }
+
+    html {
+      font-size: 62.5%;
+    }
+
+    body {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      background-color: var(--color-Light-pink);
+    }
+
+    .bg-pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 35vh;
+      background-image: url("./background-pattern-desktop.svg");
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      z-index: 0;
+    }
+
+    .faq-container {
+      width: 42%;
+      height: max-content;
+      background-color: var(--color-White);
+      padding: 20px 15px;
+      border-radius: 20px;
+      box-shadow: 0px 0px 15px rgba(128, 128, 128, 0.5);
+      z-index: 99;
+    }
+
+    .faq-container .faq-header {
+      width: 100%;
+      display: flex;
+    }
+
+    .faq-header .faq-icon {
+      flex: 0.15;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .faq-icon svg {
+      width: 35px;
+      height: 35px;
+    }
+
+    .faq-header .faq-title {
+      flex: 1;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .faq-title h1 {
+      font-family: "Work Sans", sans-serif;
+      font-size: 5rem;
+      font-weight: 700;
+      color: var(--color-Dark-purple);
+      text-align: justify;
+    }
+
+    .faq-container .faq-cards-section {
+      width: 100%;
+
+    }
+
+    .faq-cards-section .card {
+      width: 100%;
+      padding-left: 20px;
+      padding-right: 20px;
+      border-bottom: 1px solid var(--color-grey);
+
+    }
+
+    .card .card-head {
+      display: flex;
+      justify-content: space-between;
+      height: 90px;
+
+    }
+
+    .card-head .card-ques {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .card-ques h5 {
+      font-family: "Work Sans", sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-Dark-purple);
+      cursor: pointer;
+    }
+
+    .card-head .card-icon {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end !important;
+
+    }
+
+    .card-icon svg {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      padding: 5px;
+      cursor: pointer;
+    }
+
+    .card-icon .plus-icon {}
+
+    .card-icon .minus-icon {
+      display: none;
+    }
+
+    .card .card-ans {
+      display: none;
+    }
+
+    .card-ans p {
+      font-family: "Work Sans", sans-serif;
+      font-size: 1.4rem;
+      line-height: 1.5;
+      color: var(--color-Grayish-purple);
+      cursor: pointer;
+    }
+
+    .attribution {
+      position: absolute;
+      bottom: 0;
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+
+
+    /* Responsive Website Design  */
+    @media(max-width: 1440px) and (min-width: 1296px) {
+      .faq-container {
+        width: 45%;
+      }
+    }
+
+    @media(max-width: 1296px) and (min-width: 1166px) {
+      .faq-container {
+        width: 50%;
+      }
+    }
+
+    @media(max-width: 1166px) and (min-width: 972px) {
+      .faq-container {
+        width: 60%;
+      }
+
+      
+    }
+
+    @media(max-width: 972px) and (min-width: 777px) {
+      .faq-container {
+        width: 75%;
+      }
+
+      
+    }
+
+    @media(max-width: 777px) and (min-width: 468px) {
+
+      .bg-pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 40vh;
+      background-image: url("./background-pattern-mobile.svg");
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      z-index: 0;
+    }
+    
+      .faq-container {
+        width: 80%;
+      }
+
+      .card-head .card-ques {
+        padding-right: 20px;
+      }
+    }
+
+    @media(max-width: 468px) {
+
+      .bg-pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 40vh;
+      background-image: url("./background-pattern-mobile.svg");
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      z-index: 0;
+    }
+
+    .card .card-head {
+      display: flex;
+      justify-content: space-between;
+      height: 70px;
+
+      /* border: 1px solid black; */
+    }
+      .faq-container {
+        width: 90%;
+      }
+
+      .card-head .card-ques {
+        padding-right: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg-pattern">
+  </div>
+
+  <div class="faq-container">
+    <div class="faq-header">
+      <div class="faq-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="41" fill="none" viewBox="0 0 40 41">
+          <path fill="#AD28EB"
+            d="M37.5 20.5a2.467 2.467 0 0 1-1.64 2.344l-9.913 3.604-3.603 9.911a2.5 2.5 0 0 1-4.688 0l-3.604-9.922-9.911-3.593a2.5 2.5 0 0 1 0-4.688l9.921-3.604 3.594-9.911a2.5 2.5 0 0 1 4.688 0l3.604 9.921 9.911 3.594A2.467 2.467 0 0 1 37.5 20.5Z" />
+        </svg>
+      </div> <!-- faq-icon End -->
+      <div class="faq-title">
+        <h1>FAQs</h1>
+      </div> <!-- faq-title End -->
+    </div> <!-- faq-header End -->
+
+    <div class="faq-cards-section">
+
+      <div class="card" id="card-1">
+        <div class="card-head">
+          <div class="card-ques">
+            <h5>What is Frontend Mentor, and how will it help me?</h5>
+          </div> <!-- card-ques End -->
+
+          <div class="card-icon">
+            <svg class="plus-icon" xmlns="http://www.w3.org/2000/svg" width="30" height="31" fill="none"
+              viewBox="0 0 30 31">
+              <path fill="#AD28EB"
+                d="M15 3.313A12.187 12.187 0 1 0 27.188 15.5 12.203 12.203 0 0 0 15 3.312Zm4.688 13.124h-3.75v3.75a.938.938 0 0 1-1.876 0v-3.75h-3.75a.938.938 0 0 1 0-1.875h3.75v-3.75a.938.938 0 0 1 1.876 0v3.75h3.75a.938.938 0 0 1 0 1.876Z" />
+            </svg>
+            <svg class="minus-icon" xmlns="http://www.w3.org/2000/svg" width="30" height="31" fill="none"
+              viewBox="0 0 30 31">
+              <path fill="#301534"
+                d="M15 3.313A12.187 12.187 0 1 0 27.188 15.5 12.2 12.2 0 0 0 15 3.312Zm4.688 13.124h-9.375a.938.938 0 0 1 0-1.875h9.374a.938.938 0 0 1 0 1.876Z" />
+            </svg>
+          </div> <!-- card-icon End -->
+        </div> <!-- card-head End -->
+
+        <div class="card-ans">
+          <p>
+            Frontend Mentor offers realistic coding challenges to help developers improve their
+            frontend coding skills with projects in HTML, CSS, and JavaScript. It's suitable for
+            all levels and ideal for portfolio building.
+          </p>
+        </div> <!-- card-ans End -->
+      </div> <!-- card-1 End -->
+
+      <div class="card" id="card-2">
+        <div class="card-head">
+          <div class="card-ques">
+            <h5>Is Frontend Mentor free?</h5>
+          </div> <!-- card-ques End -->
+
+          <div class="card-icon">
+            <svg class="plus-icon" xmlns="http://www.w3.org/2000/svg" width="30" height="31" fill="none"
+              viewBox="0 0 30 31">
+              <path fill="#AD28EB"
+                d="M15 3.313A12.187 12.187 0 1 0 27.188 15.5 12.203 12.203 0 0 0 15 3.312Zm4.688 13.124h-3.75v3.75a.938.938 0 0 1-1.876 0v-3.75h-3.75a.938.938 0 0 1 0-1.875h3.75v-3.75a.938.938 0 0 1 1.876 0v3.75h3.75a.938.938 0 0 1 0 1.876Z" />
+            </svg>
+            <svg class="minus-icon" xmlns="http://www.w3.org/2000/svg" width="30" height="31" fill="none"
+              viewBox="0 0 30 31">
+              <path fill="#301534"
+                d="M15 3.313A12.187 12.187 0 1 0 27.188 15.5 12.2 12.2 0 0 0 15 3.312Zm4.688 13.124h-9.375a.938.938 0 0 1 0-1.875h9.374a.938.938 0 0 1 0 1.876Z" />
+            </svg>
+          </div> <!-- card-icon End -->
+        </div> <!-- card-head End -->
+
+        <div class="card-ans">
+          <p>
+            Yes, Frontend Mentor offers both free and premium coding challenges, with the free
+            option providing access to a range of projects suitable for all skill levels.
+          </p>
+        </div> <!-- card-ans End -->
+      </div> <!-- card-2 End -->
+
+      <div class="card" id="card-3">
+        <div class="card-head">
+          <div class="card-ques">
+            <h5>Can I use Frontend Mentor projects in my portfolio?</h5>
+          </div> <!-- card-ques End -->
+          <div class="card-icon">
+            <svg class="plus-icon" xmlns="http://www.w3.org/2000/svg" width="30" height="31" fill="none"
+              viewBox="0 0 30 31">
+              <path fill="#AD28EB"
+                d="M15 3.313A12.187 12.187 0 1 0 27.188 15.5 12.203 12.203 0 0 0 15 3.312Zm4.688 13.124h-3.75v3.75a.938.938 0 0 1-1.876 0v-3.75h-3.75a.938.938 0 0 1 0-1.875h3.75v-3.75a.938.938 0 0 1 1.876 0v3.75h3.75a.938.938 0 0 1 0 1.876Z" />
+            </svg>
+            <svg class="minus-icon" xmlns="http://www.w3.org/2000/svg" width="30" height="31" fill="none"
+              viewBox="0 0 30 31">
+              <path fill="#301534"
+                d="M15 3.313A12.187 12.187 0 1 0 27.188 15.5 12.2 12.2 0 0 0 15 3.312Zm4.688 13.124h-9.375a.938.938 0 0 1 0-1.875h9.374a.938.938 0 0 1 0 1.876Z" />
+            </svg>
+          </div> <!-- card-icon End -->
+        </div> <!-- card-head End -->
+
+        <div class="card-ans">
+          <p>
+            Yes, you can use projects completed on Frontend Mentor in your portfolio. It's an excellent
+            way to showcase your skills to potential employers!
+          </p>
+        </div> <!-- card-ans End -->
+      </div> <!-- card-3 End -->
+
+      <div class="card" id="card-4">
+        <div class="card-head">
+          <div class="card-ques">
+            <h5> How can I get help if I'm stuck on a Frontend Mentor challenge?</h5>
+          </div> <!-- card-ques End -->
+          <div class="card-icon">
+            <svg class="plus-icon" xmlns="http://www.w3.org/2000/svg" width="30" height="31" fill="none"
+              viewBox="0 0 30 31">
+              <path fill="#AD28EB"
+                d="M15 3.313A12.187 12.187 0 1 0 27.188 15.5 12.203 12.203 0 0 0 15 3.312Zm4.688 13.124h-3.75v3.75a.938.938 0 0 1-1.876 0v-3.75h-3.75a.938.938 0 0 1 0-1.875h3.75v-3.75a.938.938 0 0 1 1.876 0v3.75h3.75a.938.938 0 0 1 0 1.876Z" />
+            </svg>
+            <svg class="minus-icon" xmlns="http://www.w3.org/2000/svg" width="30" height="31" fill="none"
+              viewBox="0 0 30 31">
+              <path fill="#301534"
+                d="M15 3.313A12.187 12.187 0 1 0 27.188 15.5 12.2 12.2 0 0 0 15 3.312Zm4.688 13.124h-9.375a.938.938 0 0 1 0-1.875h9.374a.938.938 0 0 1 0 1.876Z" />
+            </svg>
+          </div> <!-- card-icon End -->
+        </div> <!-- card-head End -->
+
+        <div class="card-ans">
+          <p>
+            The best place to get help is inside Frontend Mentor's Discord community. There's a help
+            channel where you can ask questions and seek support from other community members.
+          </p>
+        </div> <!-- card-ans End -->
+      </div> <!-- card-4 End -->
+
+    </div> <!-- faq-cards-section End -->
+  </div> <!-- faq-container End -->
+
+
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="#">Shiwani Kandpal</a>.
+  </div>
+
+
+  <!-- JavaScript Code Start -->
+  <script>
+
+    $(document).ready(function () {
+      // Change color to rgb(140, 105, 145) on mouseenter
+      $("h5").mouseenter(function () {
+        $(this).css("color", "rgb(140, 105, 145)");
+      });
+
+      // Revert color to default on mouseleave
+      $("h5").mouseleave(function () {
+        $(this).css("color", "");
+      });
+    });
+
+    $(document).ready(function () {
+      $('.card-icon .plus-icon').click(function () {
+        var $card = $(this).closest('.card');
+        $card.find('.card-ans').slideDown();
+        $card.find('.plus-icon').hide();
+        $card.find('.minus-icon').show();
+      });
+
+      $('.card-icon .minus-icon').click(function () {
+        var $card = $(this).closest('.card');
+        $card.find('.card-ans').slideUp();
+        $card.find('.minus-icon').hide();
+        $card.find('.plus-icon').show();
+      });
+    });
+  </script>
+</body>
+
+</html>
